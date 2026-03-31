@@ -1,0 +1,630 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hành Trình Hàn Quốc 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Thư viện Icon -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Ẩn thanh cuộn cho danh sách tab ngang nhưng vẫn vuốt được */
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(5px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        /* Style cho ảnh có thể click */
+        .zoomable-image {
+            cursor: zoom-in;
+            transition: transform 0.2s;
+        }
+        .zoomable-image:active {
+            transform: scale(0.98);
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 font-sans antialiased pb-20">
+
+    <!-- Header -->
+    <header class="bg-blue-600 text-white p-6 rounded-b-3xl shadow-lg relative overflow-hidden">
+        <div class="absolute top-0 right-0 opacity-10 transform translate-x-1/4 -translate-y-1/4">
+            <i data-lucide="plane" class="w-48 h-48"></i>
+        </div>
+        <div class="relative z-10">
+            <h1 class="text-2xl font-bold mb-1">Hành Trình Hàn Quốc 🇰🇷</h1>
+            <p class="text-blue-100 text-sm">01/04/2026 - 06/04/2026 • 4 Thành viên</p>
+            <div class="mt-4 flex gap-2">
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs backdrop-blur-sm">Seoul</span>
+                <span class="bg-white/20 px-3 py-1 rounded-full text-xs backdrop-blur-sm">Mùa xuân</span>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation Tabs -->
+    <nav class="sticky top-0 z-50 bg-gray-50/90 backdrop-blur-md border-b border-gray-200">
+        <ul class="flex overflow-x-auto hide-scrollbar px-2 py-3 space-x-2" id="tabList">
+            <!-- Tabs sẽ được tạo bằng JS -->
+        </ul>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="p-4 max-w-4xl mx-auto" id="contentArea">
+        
+        <!-- Tab 1: Thông tin chuyến bay -->
+        <div id="tab-flights" class="tab-content active">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-blue-700"><i data-lucide="plane-takeoff" class="mr-2"></i> Thông tin chuyến bay</h2>
+            
+            <!-- Nhóm 1 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4 mb-4">
+                <div class="flex justify-between items-center mb-3 border-b pb-2">
+                    <h3 class="font-bold text-gray-800">Nhóm 1 (Khai Ho, Kim Chi)</h3>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">PNR: FRR6H3 / FRO43G</span>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Chiều đi • Thứ 4, 01/04/2026 • VN-408</p>
+                    <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xl font-bold">23:45</p>
+                            <p class="text-sm text-gray-600">SGN (T2)</p>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center px-4">
+                            <i data-lucide="move-right" class="text-gray-400"></i>
+                            <span class="text-[10px] text-gray-500 mt-1">Vietnam Airlines</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl font-bold">06:40<span class="text-xs text-red-500">+1</span></p>
+                            <p class="text-sm text-gray-600">ICN (T1)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Chiều về • Thứ 2, 06/04/2026 • KE-479</p>
+                    <div class="flex items-center justify-between bg-blue-50 p-3 rounded-lg border border-blue-100">
+                        <div class="text-center">
+                            <p class="text-xl font-bold">19:45</p>
+                            <p class="text-sm text-gray-600">ICN (T2)</p>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center px-4">
+                            <i data-lucide="move-right" class="text-blue-400"></i>
+                            <span class="text-[10px] text-gray-500 mt-1">Korean Air</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl font-bold">23:15</p>
+                            <p class="text-sm text-gray-600">SGN</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Nhóm 2 -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-100 p-4">
+                <div class="flex justify-between items-center mb-3 border-b pb-2">
+                    <h3 class="font-bold text-gray-800">Nhóm 2 (Khang Minh Ho)</h3>
+                    <span class="bg-blue-100 text-blue-700 text-xs font-bold px-2 py-1 rounded">PNR: Z6MCTE</span>
+                </div>
+                
+                <div class="mb-4">
+                    <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Chiều đi • Thứ 5, 02/04/2026 • OZ-736</p>
+                    <div class="flex items-center justify-between bg-gray-50 p-3 rounded-lg">
+                        <div class="text-center">
+                            <p class="text-xl font-bold">00:10</p>
+                            <p class="text-sm text-gray-600">SGN (T2)</p>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center px-4">
+                            <i data-lucide="move-right" class="text-gray-400"></i>
+                            <span class="text-[10px] text-gray-500 mt-1">Asiana Airlines</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl font-bold">06:55</p>
+                            <p class="text-sm text-gray-600">ICN (T2)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <p class="text-xs text-gray-500 font-semibold uppercase tracking-wider mb-1">Chiều về • Thứ 2, 06/04/2026 • OZ-735</p>
+                    <div class="flex items-center justify-between bg-blue-50 p-3 rounded-lg border border-blue-100">
+                        <div class="text-center">
+                            <p class="text-xl font-bold">19:25</p>
+                            <p class="text-sm text-gray-600">ICN (T2)</p>
+                        </div>
+                        <div class="flex-1 flex flex-col items-center px-4">
+                            <i data-lucide="move-right" class="text-blue-400"></i>
+                            <span class="text-[10px] text-gray-500 mt-1">Asiana Airlines</span>
+                        </div>
+                        <div class="text-center">
+                            <p class="text-xl font-bold">22:50</p>
+                            <p class="text-sm text-gray-600">SGN (T2)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: Vé Máy Bay (Hình ảnh) -->
+        <div id="tab-tickets" class="tab-content">
+            <h2 class="text-xl font-bold mb-2 flex items-center text-indigo-700"><i data-lucide="ticket" class="mr-2"></i> Ảnh Vé Máy Bay</h2>
+            <p class="text-xs text-gray-500 mb-4 italic">Chạm vào ảnh để phóng to. Hãy thay link ảnh thật vào source code.</p>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Chỗ này bạn thay src="link_anh_cua_ban" -->
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Khai Ho - Chiều đi</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Flight_KhaiHo_Depart.png"
+                         alt="Vé Khai Ho Đi" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+                
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Khai Ho - Chiều về</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Flight_KhaiHo_Return.png" 
+                         alt="Vé Khai Ho Về" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Minh Ho - Chiều đi</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Flight_Pim_Depart.png" 
+                         alt="Vé Minh Ho Đi" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Minh Ho - Chiều về</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Flight_Pim_Return.png" 
+                         alt="Vé Minh Ho Về" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: VISA (Hình ảnh) -->
+        <div id="tab-visa" class="tab-content">
+            <h2 class="text-xl font-bold mb-2 flex items-center text-green-700"><i data-lucide="tickets-plane" class="mr-2"></i> Ảnh Visa (5 Năm)</h2>
+            <p class="text-xs text-gray-500 mb-4 italic">Chạm vào ảnh để trình cho hải quan.</p>
+
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Thay src ảnh VISA tại đây -->
+                <div class="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-bold mb-2 text-center text-green-800">Ho Ngoc Khai</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/VISA_Khai.png"
+                         alt="Visa Khai Ho" class="w-full h-auto rounded zoomable-image border border-gray-100"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-bold mb-2 text-center text-green-800">Tran Thi Kim Chi</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/VISA_Chi.png" 
+                         alt="Visa Kim Chi" class="w-full h-auto rounded zoomable-image border border-gray-100"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-bold mb-2 text-center text-green-800">Ho Ngoc Khang Minh</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/VISA_Minh.png" 
+                         alt="Visa Minh Ho" class="w-full h-auto rounded zoomable-image border border-gray-100"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
+                    <p class="text-xs font-bold mb-2 text-center text-green-800">Nguyen Thi Quynh Nhu</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/VISA_Nhu.png" 
+                         alt="Visa Nhu Nguyen" class="w-full h-auto rounded zoomable-image border border-gray-100"
+                         onclick="openLightbox(this.src)">
+                </div>
+            </div>
+        </div>
+
+       <!-- Tab 4: eSIM (Mã QR trực tiếp) -->
+        <div id="tab-esim" class="tab-content">
+            <h2 class="text-xl font-bold mb-2 flex items-center text-teal-700"><i data-lucide="smartphone" class="mr-2"></i> Quét Mã QR e-SIM</h2>
+            <div class="bg-orange-50 p-3 rounded mb-4 text-xs text-orange-800 border border-orange-200">
+                <strong>Lưu ý:</strong> Dùng camera của máy quét trực tiếp vào màn hình này để cài. Chỉ quét khi có Wifi.
+            </div>
+
+            <div class="space-y-4">
+                <!-- Sim Pim Pim -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 text-center">
+                    <h3 class="font-bold text-gray-800 text-lg mb-1">eSIM - Pim Pim</h3>
+                    <p class="text-xs text-gray-500 mb-4">5 Ngày • 2GB/ngày (Hàn Quốc)</p>
+                    
+                    <div class="bg-white p-2 inline-block border-4 border-teal-500 rounded-xl mb-3 shadow-lg">
+                        <!-- ĐÂY LÀ CHỖ ĐỂ MÃ QR. Thay link src bằng ảnh QR thật nếu cần -->
+                        <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Sim1.png" 
+                             alt="QR Sim Pim Pim" class="w-48 h-48 mx-auto zoomable-image" onclick="openLightbox(this.src)">
+                    </div>
+                    <p class="text-xs text-gray-400 italic">Chạm vào mã QR để phóng to</p>
+                </div>
+
+                <!-- Sim Minh Ho -->
+                <div class="bg-white rounded-2xl p-4 shadow-sm border border-gray-200 text-center">
+                    <h3 class="font-bold text-gray-800 text-lg mb-1">eSIM - Quỳnh Như   </h3>
+                    <p class="text-xs text-gray-500 mb-4">5 Ngày • 2GB/ngày (Hàn Quốc)</p>
+                    
+                    <div class="bg-white p-2 inline-block border-4 border-teal-500 rounded-xl mb-3 shadow-lg">
+                        <!-- ĐÂY LÀ CHỖ ĐỂ MÃ QR. Thay link src bằng ảnh QR thật nếu cần -->
+                        <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Sim2.png" 
+                             alt="QR Sim Ri Beo" class="w-48 h-48 mx-auto zoomable-image" onclick="openLightbox(this.src)">
+                    </div>
+                    <p class="text-xs text-gray-400 italic">Chạm vào mã QR để phóng to</p>
+                </div>
+            </div>
+        </div>
+
+
+        <!-- Tab 5: Lịch trình -->
+        <div id="tab-itinerary" class="tab-content">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-rose-600"><i data-lucide="map" class="mr-2"></i> Lịch trình dự kiến</h2>
+            
+            <div class="relative border-l-2 border-rose-200 ml-3 pl-6 space-y-6 pb-4">
+                
+                <!-- Ngày 1 -->
+                <div class="relative">
+                    <span class="absolute -left-[35px] bg-rose-500 w-4 h-4 rounded-full border-4 border-white"></span>
+                    <h3 class="font-bold text-gray-800">Ngày 1 (02/04): Xin chào Seoul</h3>
+                    <p class="text-xs font-semibold text-rose-500 mb-2">Đón đoàn & Khám phá trung tâm</p>
+                    <div class="bg-white p-3 rounded-lg border border-gray-100 shadow-sm text-sm text-gray-600 space-y-2">
+                        <p><strong>06:40 - 06:55:</strong> Hai nhóm hạ cánh tại Incheon (ICN). Làm thủ tục nhập cảnh.</p>
+                        <p><strong>08:30:</strong> Lấy hành lý, nhận thẻ T-Money, di chuyển bằng tàu AREX về trung tâm Seoul.</p>
+                        <p><strong>10:30:</strong> Gửi hành lý tại khách sạn (Khu Myeongdong/Hongdae).</p>
+                        <p><strong>12:00:</strong> Ăn trưa: Gà hầm sâm Tosokchon.</p>
+                        <p><strong>14:00:</strong> Tham quan Tháp N Seoul (Namsan Tower).</p>
+                        <p><strong>18:00:</strong> Khám phá phố đi bộ Myeongdong, ăn vặt đường phố, mua sắm mỹ phẩm.</p>
+                    </div>
+                </div>
+
+                <!-- Ngày 2 -->
+                <div class="relative">
+                    <span class="absolute -left-[35px] bg-rose-400 w-4 h-4 rounded-full border-4 border-white"></span>
+                    <h3 class="font-bold text-gray-800">Ngày 2 (03/04): Văn hóa truyền thống</h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-100 shadow-sm text-sm text-gray-600 space-y-2 mt-2">
+                        <p><strong>09:00:</strong> Thuê Hanbok, tham quan Cung điện Gyeongbokgung (Cảnh Phúc Cung).</p>
+                        <p><strong>12:00:</strong> Dạo phố cổ Bukchon Hanok Village.</p>
+                        <p><strong>13:30:</strong> Ăn trưa và dạo phố văn hóa Insadong (mua đồ lưu niệm).</p>
+                        <p><strong>16:00:</strong> Đi dạo dọc suối Cheonggyecheon.</p>
+                        <p><strong>19:00:</strong> Ăn tối thịt nướng BBQ Hàn Quốc (Wangbijib).</p>
+                    </div>
+                </div>
+
+                <!-- Ngày 3 -->
+                <div class="relative">
+                    <span class="absolute -left-[35px] bg-rose-400 w-4 h-4 rounded-full border-4 border-white"></span>
+                    <h3 class="font-bold text-gray-800">Ngày 3 (04/04): Đảo Nami (Ngoại ô)</h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-100 shadow-sm text-sm text-gray-600 space-y-2 mt-2">
+                        <p><strong>08:00:</strong> Di chuyển đi Đảo Nami (Nami Island) - Phim trường Bản tình ca mùa đông.</p>
+                        <p><strong>12:30:</strong> Ăn trưa đặc sản Gà xào bắp cải (Dakgalbi) tại Nami.</p>
+                        <p><strong>14:30:</strong> Tham quan Làng Pháp (Petite France) hoặc Vườn Morning Calm.</p>
+                        <p><strong>18:00:</strong> Quay về Seoul. Ăn tối tự do.</p>
+                    </div>
+                </div>
+
+                <!-- Ngày 4 -->
+                <div class="relative">
+                    <span class="absolute -left-[35px] bg-rose-400 w-4 h-4 rounded-full border-4 border-white"></span>
+                    <h3 class="font-bold text-gray-800">Ngày 4 (05/04): Seoul Hiện Đại</h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-100 shadow-sm text-sm text-gray-600 space-y-2 mt-2">
+                        <p><strong>09:00:</strong> Tham quan Thư viện Starfield (COEX Mall) khu Gangnam.</p>
+                        <p><strong>11:30:</strong> Dạo đường K-Star Road, chụp hình với gấu nghệ sĩ.</p>
+                        <p><strong>13:00:</strong> Ăn trưa và vui chơi tại Lotte World (Công viên giải trí trong nhà lớn nhất) HOẶC đi chợ truyền thống Gwangjang.</p>
+                        <p><strong>19:00:</strong> Ngắm hoàng hôn/nhạc nước tại cầu Banpo (sông Hàn) ăn gà rán và bia (Chimaek).</p>
+                    </div>
+                </div>
+
+                <!-- Ngày 5 -->
+                <div class="relative">
+                    <span class="absolute -left-[35px] bg-rose-500 w-4 h-4 rounded-full border-4 border-white"></span>
+                    <h3 class="font-bold text-gray-800">Ngày 5 (06/04): Mua sắm & Tạm biệt</h3>
+                    <div class="bg-white p-3 rounded-lg border border-gray-100 shadow-sm text-sm text-gray-600 space-y-2 mt-2">
+                        <p><strong>09:00:</strong> Khám phá phố Hongdae (Khu sinh viên): mua sắm quần áo, cafe.</p>
+                        <p><strong>12:00:</strong> Check-out khách sạn, gửi đồ.</p>
+                        <p><strong>14:00:</strong> Đi Lotte Mart (Seoul Station) mua bánh kẹo, quà mang về.</p>
+                        <p><strong>15:30:</strong> Lên tàu AREX di chuyển ra sân bay Incheon.</p>
+                        <p><strong>19:25/19:45:</strong> Các chuyến bay cất cánh về SGN.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- Tab 6: Khách sạn -->
+        <div id="tab-hotel" class="tab-content">
+            
+            <!-- Placeholder section (Since no hotel PDF was provided) -->
+            <div class="bg-white rounded-2xl overflow-hidden shadow-sm border border-gray-200">
+                <div class="h-32 bg-gray-200 relative">
+                    <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/592024356.jpg?k=0dc00a9a35aa5d6a4a20958614709004fe89265c41c7190ae1a96113c774bbe3&o=" alt="Hotel room" class="w-full h-full object-cover">
+                    <div class="absolute inset-0 bg-black/30"></div>
+                    <h3 class="absolute bottom-3 left-4 text-white font-bold text-lg">MD DOKSAN Hotel</h3>
+                </div>
+                <div class="p-4">
+                    <div class="grid grid-cols-2 gap-4 mb-4 text-sm">
+                        <div>
+                            <p class="text-gray-500 text-xs">Check-in</p>
+                            <p class="font-bold">13:00 - 02/04</p>
+                        </div>
+                        <div>
+                            <p class="text-gray-500 text-xs">Check-out</p>
+                            <p class="font-bold">12:00 - 06/04</p>
+                        </div>
+                    </div>
+                    <div class="mb-4">
+                        <p class="text-gray-500 text-xs mb-1">Địa chỉ (Tiếng Anh / Tiếng Hàn)</p>
+                        <p class="text-sm font-bold text-gray-1000 bg-gray-50 p-2 rounded">
+                            315 Siheung-daero, Geumcheon District, Seoul, Korea<br>
+                            서울시 금천구 시흥대로 315 (08608)    
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 7: Quán ăn -->
+        <div id="tab-food" class="tab-content">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-orange-600"><i data-lucide="utensils" class="mr-2"></i> Gợi ý Quán Ăn</h2>
+            
+            <div class="space-y-4">
+                <!-- Food 1 -->
+                <div class="flex bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1555939594-58d7cb561ad1?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="w-24 object-cover" alt="BBQ">
+                    <div class="p-3 flex-1 flex flex-col justify-center">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-gray-800 text-sm">Wangbijib Myeongdong</h3>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-1 rounded">Thịt nướng</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">Nổi tiếng với thịt bò Hanwoo thượng hạng.</p>
+                        <div class="mt-2 text-xs text-blue-600 flex items-center" onclick="copyText('왕비집 명동본점')">
+                            <i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Copy tên tiếng Hàn
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food 2 -->
+                <div class="flex bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1580651315530-69c8e0026377?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="w-24 object-cover" alt="Ginseng Chicken">
+                    <div class="p-3 flex-1 flex flex-col justify-center">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-gray-800 text-sm">Tosokchon Samgyetang</h3>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-1 rounded">Gà hầm sâm</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">Gần cung Gyeongbokgung, không gian nhà cổ.</p>
+                        <div class="mt-2 text-xs text-blue-600 flex items-center" onclick="copyText('토속촌 삼계탕')">
+                            <i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Copy tên tiếng Hàn
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food 3 -->
+                <div class="flex bg-white rounded-xl overflow-hidden shadow-sm border border-gray-100">
+                    <img src="https://images.unsplash.com/photo-1580659325607-28d8ed2a0d92?ixlib=rb-4.0.3&auto=format&fit=crop&w=200&q=80" class="w-24 object-cover" alt="Street food">
+                    <div class="p-3 flex-1 flex flex-col justify-center">
+                        <div class="flex justify-between items-start">
+                            <h3 class="font-bold text-gray-800 text-sm">Chợ Gwangjang</h3>
+                            <span class="text-xs bg-orange-100 text-orange-600 px-1 rounded">Ăn vặt</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1 line-clamp-1">Bánh xèo đậu xanh, gimbap nấm trọc, bạch tuộc sống.</p>
+                        <div class="mt-2 text-xs text-blue-600 flex items-center" onclick="copyText('광장시장')">
+                            <i data-lucide="map-pin" class="w-3 h-3 mr-1"></i> Copy tên tiếng Hàn
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 8: Tàu điện & Di chuyển -->
+        <div id="tab-trains" class="tab-content">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-purple-700"><i data-lucide="train" class="mr-2"></i> Di Chuyển & Tàu Điện</h2>
+            
+            <div class="bg-indigo-50 border-l-4 border-indigo-500 p-4 mb-4 rounded-r-lg">
+                <h3 class="font-bold text-indigo-800 flex items-center text-sm mb-1">
+                    <i data-lucide="smartphone" class="w-4 h-4 mr-1"></i> App bắt buộc: Naver Map
+                </h3>
+                <p class="text-xs text-indigo-700">Google Map hoạt động rất kém ở Hàn Quốc. Hãy tải <strong>Naver Map</strong> hoặc <strong>KakaoMap</strong> để tìm đường đi bộ và tàu điện ngầm.</p>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-sm border border-gray-200 p-4 mb-4">
+                <h3 class="font-bold text-gray-800 mb-2 border-b pb-2 text-sm">Tàu từ Sân bay Incheon (AREX)</h3>
+                <p class="text-sm text-gray-600 mb-2">Có 2 loại tàu từ Incheon về ga Seoul (Seoul Station):</p>
+                <ul class="text-sm text-gray-600 space-y-2">
+                    <li class="flex items-start">
+                        <span class="bg-orange-500 w-3 h-3 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                        <div><strong>Express Train:</strong> Đi thẳng không dừng, giá ~9,500 KRW, mất 43 phút. Cần mua vé riêng.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-blue-500 w-3 h-3 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                        <div><strong>All-stop Train:</strong> Dừng ở các ga, giá ~4,150 KRW, mất 59 phút. Quẹt thẻ T-Money.</div>
+                    </li>
+                    <li class="flex items-start">
+                        <span class="bg-green-500 w-3 h-3 rounded-full mt-1 mr-2 flex-shrink-0"></span>
+                        <div><strong>Airport Limosine Bus: </strong> 6004 - Đi từ Incheon đến Geumcheon-gu Office (Police Station)</div>
+                    </li>
+                </ul>
+            </div>
+
+            <h3 class="font-bold text-gray-800 mb-2 text-sm">Các Line tàu chính hay dùng</h3>
+            <div class="space-y-3">
+                <div class="flex items-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-[#00a2d1] text-white flex items-center justify-center font-bold mr-3 flex-shrink-0">4</div>
+                    <div class="text-sm">
+                        <strong class="text-gray-800">Line 4 (Xanh nhạt)</strong>
+                        <p class="text-gray-500 text-xs mt-1">Đi qua: Myeongdong, Dongdaemun, Seoul Station.</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-[#3cb44a] text-white flex items-center justify-center font-bold mr-3 flex-shrink-0">2</div>
+                    <div class="text-sm">
+                        <strong class="text-gray-800">Line 2 (Xanh lá - Tuyến vòng tròn)</strong>
+                        <p class="text-gray-500 text-xs mt-1">Đi qua: Hongdae (Hongik Univ), Gangnam, Lotte World (Jamsil).</p>
+                    </div>
+                </div>
+                <div class="flex items-center p-3 bg-white rounded-lg border border-gray-100 shadow-sm">
+                    <div class="w-8 h-8 rounded-full bg-[#f37321] text-white flex items-center justify-center font-bold mr-3 flex-shrink-0">3</div>
+                    <div class="text-sm">
+                        <strong class="text-gray-800">Line 3 (Cam)</strong>
+                        <p class="text-gray-500 text-xs mt-1">Đi qua: Cung Gyeongbokgung, Anguk (Bukchon Hanok), Sinsa.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-4 p-3 bg-gray-100 rounded-lg text-center text-xs text-gray-600">
+                Nhớ mua thẻ <strong>T-Money</strong> tại cửa hàng tiện lợi (CU, GS25, 7-Eleven) ngay khi hạ cánh và nạp tiền mặt vào thẻ để đi tàu/bus.
+            </div>
+        </div>
+
+    </main>
+
+    <!-- Trình xem ảnh Full Screen (Lightbox) -->
+    <div id="imageLightbox" class="fixed inset-0 bg-black/95 z-[100] hidden flex flex-col items-center justify-center backdrop-blur-sm transition-opacity">
+        <div class="absolute top-4 right-4 flex space-x-4 z-10">
+            <button onclick="closeLightbox()" class="text-white bg-gray-800/50 p-2 rounded-full hover:bg-gray-700">
+                <i data-lucide="x" class="w-6 h-6"></i>
+            </button>
+        </div>
+        <img id="lightboxImg" src="" class="max-w-[95vw] max-h-[90vh] object-contain rounded-lg shadow-2xl">
+        <p class="text-gray-400 text-sm mt-4">Có thể dùng 2 ngón tay để zoom trên điện thoại</p>
+    </div>
+
+    <!-- Custom Modal for Notifications instead of Alert -->
+    <div id="customModal" class="fixed inset-0 bg-black/50 z-[100] hidden flex items-center justify-center backdrop-blur-sm">
+        <div class="bg-white rounded-2xl p-6 max-w-sm w-[90%] mx-auto shadow-2xl transform transition-all text-center">
+            <div id="modalIcon" class="mx-auto w-12 h-12 bg-blue-100 text-blue-600 rounded-full flex items-center justify-center mb-4">
+                <i data-lucide="check-circle" class="w-6 h-6"></i>
+            </div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2" id="modalTitle">Thông báo</h3>
+            <p class="text-gray-600 text-sm mb-6" id="modalMessage">Nội dung tin nhắn</p>
+            <button onclick="closeModal()" class="w-full bg-blue-600 text-white py-2.5 rounded-lg font-bold hover:bg-blue-700">Đóng</button>
+        </div>
+    </div>
+
+    <script>
+        // Khởi tạo các icon của Lucide
+        lucide.createIcons();
+
+        // Cấu hình Tabs
+        const tabs = [
+            { id: 'flights', icon: 'plane', label: 'Chuyến bay' },
+            { id: 'tickets', icon: 'ticket', label: 'Vé PDF' },
+            { id: 'visa', icon: 'tickets-plane', label: 'VISA' },
+            { id: 'esim', icon: 'smartphone-nfc', label: 'e-SIM' },
+            { id: 'itinerary', icon: 'map-pinned', label: 'Lịch trình' },
+            { id: 'hotel', icon: 'bed', label: 'Khách sạn' },
+            { id: 'food', icon: 'utensils-crossed', label: 'Quán ăn' },
+            { id: 'trains', icon: 'train-front', label: 'Tàu điện' }
+        ];
+
+        const tabListEl = document.getElementById('tabList');
+
+        // Tạo giao diện Tabs
+        tabs.forEach((tab, index) => {
+            const li = document.createElement('li');
+            const isActive = index === 0 ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200';
+            
+            li.innerHTML = `
+                <button onclick="switchTab('${tab.id}', this)" class="tab-btn flex items-center whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive}">
+                    <i data-lucide="${tab.icon}" class="w-4 h-4 mr-2"></i> ${tab.label}
+                </button>
+            `;
+            tabListEl.appendChild(li);
+        });
+
+        // Cập nhật lại icons cho các nút vừa được tạo động
+        lucide.createIcons();
+
+        // Hàm chuyển Tab
+        function switchTab(tabId, btnElement) {
+            // Ẩn tất cả nội dung
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            
+            // Xóa active class ở tất cả button
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
+                btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            });
+
+            // Hiện nội dung mục tiêu
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            // Set active cho button được click
+            btnElement.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
+            btnElement.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+            // Scroll tab bar để button active luôn nằm trong tầm nhìn
+            btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+
+        // Thay thế window.alert mặc định để đẹp hơn trên iFrame/Mobile
+        window.alert = function(message) {
+            document.getElementById('modalTitle').innerText = 'Trình xem tài liệu';
+            document.getElementById('modalMessage').innerText = message;
+            document.getElementById('customModal').classList.remove('hidden');
+        };
+
+        function closeModal() {
+            document.getElementById('customModal').classList.add('hidden');
+        }
+         // --- Chức năng Lightbox xem ảnh ---
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
+
+        function openLightbox(imageSrc) {
+            lightboxImg.src = imageSrc;
+            lightbox.classList.remove('hidden');
+        }
+
+        function closeLightbox() {
+            lightbox.classList.add('hidden');
+            setTimeout(() => { lightboxImg.src = ''; }, 300); // Xóa src sau khi đóng
+        }
+
+        // Đóng lightbox khi click ra ngoài ảnh
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
+        });
+
+        // Copy Clipboard
+        function copyText(text) {
+            // Sử dụng textarea ẩn để copy thay vì navigator clipboard API để tránh lỗi iFrame
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            
+            // Tránh cuộn trang
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if(successful) {
+                    document.getElementById('modalTitle').innerText = 'Thành công';
+                    document.getElementById('modalMessage').innerText = 'Đã sao chép: ' + text;
+                    document.getElementById('customModal').classList.remove('hidden');
+                }
+            } catch (err) {
+                console.error('Không thể copy', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
+    </script>
+</body>
+</html>
+
