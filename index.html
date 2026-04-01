@@ -170,6 +170,7 @@
             <p class="text-xs text-gray-500 mb-4 italic">Chạm vào ảnh để phóng to. Hãy thay link ảnh thật vào source code.</p>
             
             <div class="grid grid-cols-2 gap-3">
+                <!-- Chỗ này bạn thay src="link_anh_cua_ban" -->
                 <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
                     <p class="text-xs font-bold mb-2 w-full text-center">Khai Ho - Chiều đi</p>
                     <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Flight_KhaiHo_Depart.png"
@@ -206,6 +207,7 @@
             <p class="text-xs text-gray-500 mb-4 italic">Chạm vào ảnh để phóng to. </p>
             
             <div class="grid grid-cols-2 gap-3">
+                <!-- Chỗ này bạn thay src="link_anh_cua_ban" -->
                 <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
                     <p class="text-xs font-bold mb-2 w-full text-center">Ho Ngoc Khai</p>
                     <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/KNC_Khai.png"
@@ -242,6 +244,7 @@
             <p class="text-xs text-gray-500 mb-4 italic">Chạm vào ảnh để trình cho hải quan.</p>
 
             <div class="grid grid-cols-2 gap-3">
+                <!-- Thay src ảnh VISA tại đây -->
                 <div class="bg-white p-2 rounded-xl border border-gray-200 shadow-sm">
                     <p class="text-xs font-bold mb-2 text-center text-green-800">Ho Ngoc Khai</p>
                     <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/VISA_Khai.png"
@@ -286,6 +289,7 @@
                     <p class="text-xs text-gray-500 mb-4">5 Ngày • 2GB/ngày (Hàn Quốc)</p>
                     
                     <div class="bg-white p-2 inline-block border-4 border-teal-500 rounded-xl mb-3 shadow-lg">
+                        <!-- ĐÂY LÀ CHỖ ĐỂ MÃ QR. Thay link src bằng ảnh QR thật nếu cần -->
                         <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Sim1.png" 
                              alt="QR Sim Pim Pim" class="w-48 h-48 mx-auto zoomable-image" onclick="openLightbox(this.src)">
                     </div>
@@ -298,6 +302,7 @@
                     <p class="text-xs text-gray-500 mb-4">5 Ngày • 2GB/ngày (Hàn Quốc)</p>
                     
                     <div class="bg-white p-2 inline-block border-4 border-teal-500 rounded-xl mb-3 shadow-lg">
+                        <!-- ĐÂY LÀ CHỖ ĐỂ MÃ QR. Thay link src bằng ảnh QR thật nếu cần -->
                         <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/Sim2.png" 
                              alt="QR Sim Ri Beo" class="w-48 h-48 mx-auto zoomable-image" onclick="openLightbox(this.src)">
                     </div>
@@ -308,6 +313,7 @@
 
          <!-- Tab 5: Khách sạn -->
         <div id="tab-hotel" class="tab-content">
+            <!-- Placeholder section (Since no hotel PDF was provided) -->
                 <div class="bg-white overflow-hidden shadow-sm border border-gray-200">
                     <div class="h-32 bg-gray-200 relative">
                         <img src="https://cf.bstatic.com/xdata/images/hotel/max1024x768/592024356.jpg?k=0dc00a9a35aa5d6a4a20958614709004fe89265c41c7190ae1a96113c774bbe3&o=" alt="Hotel room" class="w-full h-full object-cover">
@@ -448,6 +454,8 @@
             </div>
         </div>
 
+        <!-- Tab 7: Quán ăn -->
+       
         <!-- Tab 8: Tàu điện & Di chuyển -->
         <div id="tab-trains" class="tab-content">
             <h2 class="text-xl font-bold mb-4 flex items-center text-purple-700"><i data-lucide="train" class="mr-2"></i> Di Chuyển & Tàu Điện</h2>
@@ -507,15 +515,10 @@
                 Nhớ mua thẻ <strong>T-Money</strong> tại cửa hàng tiện lợi (CU, GS25, 7-Eleven) ngay khi hạ cánh và nạp tiền mặt vào thẻ để đi tàu/bus.
             </div>
         </div>
-
-        <!-- Tab 7: QUẢN LÝ CHI TIÊU -->
+<!-- Tab 7: QUẢN LÝ CHI TIÊU -->
         <div id="tab-budget" class="tab-content">
             <h2 class="text-xl font-bold mb-4 flex items-center text-emerald-600"><i data-lucide="wallet" class="mr-2"></i> Quản Lý Chi Tiêu</h2>
-            <div id="syncStatus" class="bg-blue-50 text-blue-700 text-xs px-3 py-2 rounded-lg border border-blue-200 mb-4 flex items-center font-medium">
-                <i data-lucide="cloud-off" class="w-4 h-4 mr-2" id="syncIcon"></i>
-                <span id="syncText">Đang tải dữ liệu từ Cloud...</span>
-            </div>
-
+            
             <!-- Phần nhập ngân sách -->
             <div class="bg-white rounded-2xl shadow-sm border border-emerald-100 p-4 mb-4">
                 <label class="block text-xs font-bold text-gray-700 mb-1">Ngân sách hiện có (KRW)</label>
@@ -652,133 +655,9 @@
         </div>
     </div>
 
-    <!-- Toast Notification Non-Blocking -->
-    <div id="toastNotif" class="fixed bottom-24 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white px-5 py-3 rounded-full shadow-lg text-sm transition-opacity duration-300 opacity-0 pointer-events-none z-[110] flex items-center whitespace-nowrap">
-        <i data-lucide="info" class="w-4 h-4 mr-2 text-blue-400"></i>
-        <span id="toastMsg">Thông báo</span>
-    </div>
-
-    <!-- Tích hợp Firebase Cloud Storage -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
-        import { getAuth, signInWithCustomToken, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
-        import { getFirestore, doc, setDoc, onSnapshot } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
-
-        // Firebase Configuration (Tự động nhận diện từ môi trường)
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'korea-trip-budget-default';
-        
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getFirestore(app);
-
-        let user = null;
-        let isFirebaseReady = false;
-
-        // Biến toàn cục quản lý chi tiêu
-        window.budgetKRW = 0;
-        window.expenses = [];
-        window.myChart = null;
-        window.lucide = window.lucide || lucide;
-
-        // Bắt đầu quy trình xác thực
-        const initAuth = async () => {
-            try {
-                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
-                    await signInWithCustomToken(auth, __initial_auth_token);
-                } else {
-                    await signInAnonymously(auth);
-                }
-            } catch (error) {
-                console.error("Authentication Error", error);
-            }
-        };
-
-        initAuth();
-
-        // Lắng nghe sự thay đổi xác thực và kết nối Database
-        onAuthStateChanged(auth, (currentUser) => {
-            user = currentUser;
-            if (user) {
-                const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'tripBudget', 'shared');
-                
-                // onSnapshot giúp tự động đồng bộ thời gian thực mỗi khi có ai cập nhật
-                onSnapshot(docRef, (docSnap) => {
-                    isFirebaseReady = true;
-                    
-                    if (docSnap.exists()) {
-                        const data = docSnap.data();
-                        window.budgetKRW = data.budgetKRW || 0;
-                        window.expenses = data.expenses || [];
-                        document.getElementById('budgetInput').value = window.budgetKRW > 0 ? window.budgetKRW : '';
-                    } else {
-                        window.budgetKRW = 0;
-                        window.expenses = [];
-                    }
-                    
-                    updateSyncUI(true);
-                    window.updateBudgetDashboard();
-                    window.renderExpenseList();
-                    window.updateChart();
-                }, (error) => {
-                    console.error("Lỗi đồng bộ dữ liệu: ", error);
-                    updateSyncUI(false);
-                });
-            }
-        });
-
-        // Hàm cập nhật trạng thái UI kết nối
-        function updateSyncUI(isSuccess) {
-            const syncIcon = document.getElementById('syncIcon');
-            const syncText = document.getElementById('syncText');
-            const syncContainer = document.getElementById('syncStatus');
-            
-            if (isSuccess) {
-                syncIcon.setAttribute('data-lucide', 'cloud-lightning');
-                syncText.innerText = "Dữ liệu được đồng bộ Cloud thời gian thực";
-                syncContainer.className = "bg-emerald-50 text-emerald-700 text-xs px-3 py-2 rounded-lg border border-emerald-200 mb-4 flex items-center font-medium";
-            } else {
-                syncIcon.setAttribute('data-lucide', 'cloud-off');
-                syncText.innerText = "Mất kết nối dữ liệu. Vui lòng tải lại trang.";
-                syncContainer.className = "bg-rose-50 text-rose-700 text-xs px-3 py-2 rounded-lg border border-rose-200 mb-4 flex items-center font-medium";
-            }
-            window.lucide.createIcons();
-        }
-
-        // Hàm lưu trữ dữ liệu lên Firebase
-        window.saveDataToCloud = async function() {
-            if (!user || !isFirebaseReady) {
-                window.showToast("Đang kết nối lại máy chủ...");
-                return;
-            }
-            const docRef = doc(db, 'artifacts', appId, 'public', 'data', 'tripBudget', 'shared');
-            try {
-                await setDoc(docRef, {
-                    budgetKRW: window.budgetKRW,
-                    expenses: window.expenses,
-                    updatedAt: new Date().toISOString()
-                });
-            } catch (error) {
-                console.error("Lỗi lưu dữ liệu: ", error);
-                window.alert("Không thể lưu dữ liệu. Hãy kiểm tra kết nối mạng!");
-            }
-        };
-
-        // UI TOAST THÔNG BÁO
-        window.showToast = function(msg) {
-            const toast = document.getElementById('toastNotif');
-            document.getElementById('toastMsg').innerText = msg;
-            toast.classList.remove('opacity-0');
-            toast.classList.add('opacity-100');
-            setTimeout(() => {
-                toast.classList.remove('opacity-100');
-                toast.classList.add('opacity-0');
-            }, 3000);
-        };
-
-        // KHỞI TẠO GIAO DIỆN CHÍNH
-        window.lucide.createIcons();
-        document.getElementById('expDate').valueAsDate = new Date();
+    <script>
+        // Khởi tạo các icon của Lucide
+        lucide.createIcons();
         
         // Cấu hình Tabs
         const tabs = [
@@ -795,60 +674,79 @@
 
         const tabListEl = document.getElementById('tabList');
 
+        // Tạo giao diện Tabs
         tabs.forEach((tab, index) => {
             const li = document.createElement('li');
             const isActive = index === 0 ? 'bg-blue-600 text-white shadow-md' : 'bg-white text-gray-600 border border-gray-200';
+            
             li.innerHTML = `
-                <button onclick="window.switchTab('${tab.id}', this)" class="tab-btn flex items-center whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive}">
+                <button onclick="switchTab('${tab.id}', this)" class="tab-btn flex items-center whitespace-nowrap px-4 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive}">
                     <i data-lucide="${tab.icon}" class="w-4 h-4 mr-2"></i> ${tab.label}
                 </button>
             `;
             tabListEl.appendChild(li);
         });
-        window.lucide.createIcons();
 
-        // Gán các hàm điều khiển UI vào scope của Window
-        window.switchTab = function(tabId, btnElement) {
+        // Cập nhật lại icons cho các nút vừa được tạo động
+        lucide.createIcons();
+
+        // Hàm chuyển Tab
+        function switchTab(tabId, btnElement) {
+            // Ẩn tất cả nội dung
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            
+            // Xóa active class ở tất cả button
             document.querySelectorAll('.tab-btn').forEach(btn => {
                 btn.classList.remove('bg-blue-600', 'text-white', 'shadow-md');
                 btn.classList.add('bg-white', 'text-gray-600', 'border', 'border-gray-200');
             });
+
+            // Hiện nội dung mục tiêu
             document.getElementById(`tab-${tabId}`).classList.add('active');
+            
+            // Set active cho button được click
             btnElement.classList.remove('bg-white', 'text-gray-600', 'border', 'border-gray-200');
             btnElement.classList.add('bg-blue-600', 'text-white', 'shadow-md');
+
+            // Scroll tab bar để button active luôn nằm trong tầm nhìn
             btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        }
+       
+        // --- Chức năng Quản lý Chi Tiêu ---
+        const KRW_TO_VND_RATE = 18.5; // Tỷ giá 1 KRW = 18.5 VND
+        let budgetKRW = 0;
+        let expenses = []; 
+        let myChart = null; // Biến lưu trữ biểu đồ
+
+        // Thông tin cấu hình các hạng mục cho biểu đồ
+        const categoryInfo = {
+            'eat': { label: 'Ăn uống', color: '#f59e0b', icon: '🍔' }, // Amber
+            'transport': { label: 'Đi lại', color: '#3b82f6', icon: '🚌' }, // Blue
+            'shopping': { label: 'Mua sắm', color: '#ec4899', icon: '🛍️' }, // Pink
+            'ticket': { label: 'Vé tham quan', color: '#10b981', icon: '🎟️' }, // Emerald
+            'other': { label: 'Khác', color: '#6b7280', icon: '📦' } // Gray
         };
 
-        // CẤU HÌNH NGÂN SÁCH
-        const KRW_TO_VND_RATE = 18.5; 
-        const categoryInfo = {
-            'eat': { label: 'Ăn uống', color: '#f59e0b', icon: '🍔' },
-            'transport': { label: 'Đi lại', color: '#3b82f6', icon: '🚌' },
-            'shopping': { label: 'Mua sắm', color: '#ec4899', icon: '🛍️' },
-            'ticket': { label: 'Vé tham quan', color: '#10b981', icon: '🎟️' },
-            'other': { label: 'Khác', color: '#6b7280', icon: '📦' }
-        };
         const formatKRW = (num) => new Intl.NumberFormat('ko-KR').format(num) + ' ₩';
         const formatVND = (num) => new Intl.NumberFormat('vi-VN').format(num) + ' đ';
 
-        window.previewVND = function() {
+        function previewVND() {
             const krwVal = document.getElementById('expAmount').value;
             const vndVal = krwVal ? Math.round(krwVal * KRW_TO_VND_RATE) : 0;
             document.getElementById('vndPreview').innerText = `≈ ${formatVND(vndVal)}`;
-        };
+        }
 
-        window.setBudget = async function() {
+        function setBudget() {
             const inputVal = document.getElementById('budgetInput').value;
-            window.budgetKRW = Number(inputVal) || 0;
-            window.updateBudgetDashboard();
-            await window.saveDataToCloud(); // Đồng bộ lên mạng
-            window.showToast("Đã cập nhật ngân sách lên Cloud!");
-        };
+            budgetKRW = Number(inputVal) || 0;
+            updateBudgetDashboard();
+            showToast("Đã cập nhật ngân sách!");
+        }
 
-        window.addExpense = async function(e) {
+        function addExpense(e) {
             e.preventDefault();
             const amount = Number(document.getElementById('expAmount').value);
+            
             const expense = {
                 id: Date.now(),
                 desc: document.getElementById('expDesc').value,
@@ -859,33 +757,31 @@
                 source: document.getElementById('expSource').value
             };
 
-            window.expenses.unshift(expense);
+            expenses.unshift(expense);
             document.getElementById('expenseForm').reset();
             document.getElementById('vndPreview').innerText = `≈ 0 VNĐ`;
             document.getElementById('expDate').valueAsDate = new Date();
 
-            window.updateBudgetDashboard();
-            window.renderExpenseList();
-            window.updateChart();
-            await window.saveDataToCloud(); // Lưu thẳng lên mây
-            window.showToast("Đã thêm chi tiêu và đồng bộ!");
-        };
+            updateBudgetDashboard();
+            renderExpenseList();
+            updateChart(); // Cập nhật lại biểu đồ
+            showToast("Đã thêm khoản chi!");
+        }
 
-        window.deleteExpense = async function(id) {
-            window.expenses = window.expenses.filter(exp => exp.id !== id);
-            window.updateBudgetDashboard();
-            window.renderExpenseList();
-            window.updateChart();
-            await window.saveDataToCloud();
-            window.showToast("Đã xóa chi tiêu khỏi Cloud!");
-        };
+        function deleteExpense(id) {
+            expenses = expenses.filter(exp => exp.id !== id);
+            updateBudgetDashboard();
+            renderExpenseList();
+            updateChart(); // Cập nhật lại biểu đồ
+            showToast("Đã xóa khoản chi!");
+        }
 
-        window.updateBudgetDashboard = function() {
-            const totalSpent = window.expenses.reduce((sum, exp) => sum + exp.amount, 0);
-            const remaining = window.budgetKRW - totalSpent;
+        function updateBudgetDashboard() {
+            const totalSpent = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            const remaining = budgetKRW - totalSpent;
             const remainingVND = remaining * KRW_TO_VND_RATE;
 
-            document.getElementById('statBudget').innerText = formatKRW(window.budgetKRW);
+            document.getElementById('statBudget').innerText = formatKRW(budgetKRW);
             document.getElementById('statSpent').innerText = formatKRW(totalSpent);
             
             const remainEl = document.getElementById('statRemaining');
@@ -897,26 +793,28 @@
                 remainEl.classList.add('text-blue-900');
                 remainEl.classList.remove('text-rose-600');
             }
+
             document.getElementById('statRemainingVND').innerText = formatVND(remainingVND);
-        };
+        }
 
         const sourceLabels = {
             'cash': '<span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded border border-green-200">Tiền mặt</span>',
             'credit': '<span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200">Thẻ</span>'
         };
 
-        window.renderExpenseList = function() {
+        function renderExpenseList() {
             const listEl = document.getElementById('expenseList');
             const emptyMsg = document.getElementById('emptyExpenseMsg');
+            
             listEl.innerHTML = '';
             
-            if (window.expenses.length === 0) {
+            if (expenses.length === 0) {
                 emptyMsg.style.display = 'block';
                 return;
             }
             emptyMsg.style.display = 'none';
 
-            window.expenses.forEach(exp => {
+            expenses.forEach(exp => {
                 const vndEquivalent = formatVND(exp.amount * KRW_TO_VND_RATE);
                 const dateParts = exp.date.split('-');
                 const displayDate = dateParts.length === 3 ? `${dateParts[2]}/${dateParts[1]}` : exp.date;
@@ -941,46 +839,49 @@
                         <p class="text-[10px] text-gray-400">≈ ${vndEquivalent}</p>
                         <div class="mt-1 flex items-center gap-2">
                             ${sourceLabels[exp.source]}
-                            <button onclick="window.deleteExpense(${exp.id})" class="text-gray-300 hover:text-red-500"><i data-lucide="trash-2" class="w-3 h-3"></i></button>
+                            <button onclick="deleteExpense(${exp.id})" class="text-gray-300 hover:text-red-500"><i data-lucide="trash-2" class="w-3 h-3"></i></button>
                         </div>
                     </div>
                 `;
                 listEl.appendChild(item);
             });
-            window.lucide.createIcons();
-        };
+            lucide.createIcons();
+        }
 
-        window.updateChart = function() {
+        // --- Hàm vẽ và cập nhật biểu đồ Chart.js ---
+        function updateChart() {
             const ctx = document.getElementById('expenseChart').getContext('2d');
             const emptyChartMsg = document.getElementById('emptyChartMsg');
             const breakdownContainer = document.getElementById('categoryBreakdown');
 
-            if (window.expenses.length === 0) {
+            if (expenses.length === 0) {
                 emptyChartMsg.style.display = 'block';
-                breakdownContainer.classList.add('hidden');
-                if (window.myChart) {
-                    window.myChart.destroy();
-                    window.myChart = null;
+                breakdownContainer.classList.add('hidden'); // Ẩn breakdown khi không có dữ liệu
+                if (myChart) {
+                    myChart.destroy();
+                    myChart = null;
                 }
                 return;
             }
 
             emptyChartMsg.style.display = 'none';
-            breakdownContainer.classList.remove('hidden');
+            breakdownContainer.classList.remove('hidden'); // Hiển thị breakdown
 
+            // Tính tổng tiền cho từng hạng mục
             const categoryTotals = {};
             Object.keys(categoryInfo).forEach(cat => categoryTotals[cat] = 0);
             
             let totalExpenses = 0;
-            window.expenses.forEach(exp => {
+            expenses.forEach(exp => {
                 categoryTotals[exp.category] += exp.amount;
                 totalExpenses += exp.amount;
             });
 
+            // Lọc ra các hạng mục có dữ liệu (>0) để hiển thị
             const labels = [];
             const data = [];
             const backgroundColors = [];
-            let breakdownHTML = '';
+            let breakdownHTML = ''; // Biến chứa HTML cho danh sách chi tiết
 
             Object.keys(categoryTotals).forEach(cat => {
                 if (categoryTotals[cat] > 0) {
@@ -988,8 +889,11 @@
                     labels.push(categoryInfo[cat].label);
                     data.push(amount);
                     backgroundColors.push(categoryInfo[cat].color);
+
+                    // Tính phần trăm
                     const percent = Math.round((amount / totalExpenses) * 100);
                     
+                    // Tạo HTML cho từng hạng mục
                     breakdownHTML += `
                         <div class="flex items-center justify-between text-sm bg-gray-50 p-2 rounded-lg border border-gray-100">
                             <div class="flex items-center gap-2">
@@ -1005,15 +909,18 @@
                 }
             });
 
+            // Đưa HTML vào container
             breakdownContainer.innerHTML = breakdownHTML;
 
-            if (window.myChart) {
-                window.myChart.data.labels = labels;
-                window.myChart.data.datasets[0].data = data;
-                window.myChart.data.datasets[0].backgroundColor = backgroundColors;
-                window.myChart.update();
+            // Nếu biểu đồ đã tồn tại, chỉ cần cập nhật dữ liệu
+            if (myChart) {
+                myChart.data.labels = labels;
+                myChart.data.datasets[0].data = data;
+                myChart.data.datasets[0].backgroundColor = backgroundColors;
+                myChart.update();
             } else {
-                window.myChart = new Chart(ctx, {
+                // Tạo biểu đồ mới
+                myChart = new Chart(ctx, {
                     type: 'doughnut',
                     data: {
                         labels: labels,
@@ -1028,7 +935,9 @@
                         responsive: true,
                         maintainAspectRatio: false,
                         plugins: {
-                            legend: { display: false },
+                            legend: {
+                                display: false // Tắt legend mặc định của chartjs vì đã có custom breakdown ở dưới
+                            },
                             tooltip: {
                                 callbacks: {
                                     label: function(context) {
@@ -1040,39 +949,75 @@
                                 }
                             }
                         },
-                        cutout: '70%'
+                        cutout: '70%' // Làm vòng tròn mỏng lại trông hiện đại hơn
                     }
                 });
             }
-        };
+        }
 
-        // UI & Modal helpers
+        // Khởi tạo ngày hôm nay cho form chi tiêu khi load trang
+        document.getElementById('expDate').valueAsDate = new Date();
+        updateChart(); // Gọi lần đầu để setup UI trống
+        // Khởi tạo ngày hôm nay cho form chi tiêu khi load trang
+        document.getElementById('expDate').valueAsDate = new Date();
+        
+        // Thay thế window.alert mặc định để đẹp hơn trên iFrame/Mobile
         window.alert = function(message) {
-            document.getElementById('modalTitle').innerText = 'Thông báo hệ thống';
+            document.getElementById('modalTitle').innerText = 'Trình xem tài liệu';
             document.getElementById('modalMessage').innerText = message;
             document.getElementById('customModal').classList.remove('hidden');
         };
 
-        window.closeModal = function() {
+        function closeModal() {
             document.getElementById('customModal').classList.add('hidden');
-        };
+        }
+         // --- Chức năng Lightbox xem ảnh ---
+        const lightbox = document.getElementById('imageLightbox');
+        const lightboxImg = document.getElementById('lightboxImg');
 
-        window.openLightbox = function(imageSrc) {
-            const lightbox = document.getElementById('imageLightbox');
-            document.getElementById('lightboxImg').src = imageSrc;
+        function openLightbox(imageSrc) {
+            lightboxImg.src = imageSrc;
             lightbox.classList.remove('hidden');
-        };
+        }
 
-        window.closeLightbox = function() {
-            const lightbox = document.getElementById('imageLightbox');
+        function closeLightbox() {
             lightbox.classList.add('hidden');
-            setTimeout(() => { document.getElementById('lightboxImg').src = ''; }, 300);
-        };
+            setTimeout(() => { lightboxImg.src = ''; }, 300); // Xóa src sau khi đóng
+        }
 
-        document.getElementById('imageLightbox').addEventListener('click', function(e) {
-            if (e.target === this) window.closeLightbox();
+        // Đóng lightbox khi click ra ngoài ảnh
+        lightbox.addEventListener('click', function(e) {
+            if (e.target === lightbox) closeLightbox();
         });
 
+        // Copy Clipboard
+        function copyText(text) {
+            // Sử dụng textarea ẩn để copy thay vì navigator clipboard API để tránh lỗi iFrame
+            var textArea = document.createElement("textarea");
+            textArea.value = text;
+            
+            // Tránh cuộn trang
+            textArea.style.top = "0";
+            textArea.style.left = "0";
+            textArea.style.position = "fixed";
+
+            document.body.appendChild(textArea);
+            textArea.focus();
+            textArea.select();
+
+            try {
+                var successful = document.execCommand('copy');
+                if(successful) {
+                    document.getElementById('modalTitle').innerText = 'Thành công';
+                    document.getElementById('modalMessage').innerText = 'Đã sao chép: ' + text;
+                    document.getElementById('customModal').classList.remove('hidden');
+                }
+            } catch (err) {
+                console.error('Không thể copy', err);
+            }
+
+            document.body.removeChild(textArea);
+        }
     </script>
 </body>
 </html>
