@@ -199,6 +199,43 @@
             </div>
         </div>
 
+        <!-- Tab 2A: Khai Nhap Canh -->
+        <div id="tab-import" class="tab-content">
+            <h2 class="text-xl font-bold mb-2 flex items-center text-indigo-700"><i data-lucide="ticket" class="mr-2"></i> Tờ khai nhập cảnh</h2>
+            <p class="text-xs text-gray-500 mb-4 italic">Chạm vào ảnh để phóng to. </p>
+            
+            <div class="grid grid-cols-2 gap-3">
+                <!-- Chỗ này bạn thay src="link_anh_cua_ban" -->
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Ho Ngoc Khai</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/KNC_Khai.png"
+                         alt="Vé Khai Ho Đi" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+                
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Tran Thi Kim Chi</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/KNC_Chi.png" 
+                         alt="Vé Khai Ho Về" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Ho Ngoc Khang Minh</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/KNC_Minh.png" 
+                         alt="Vé Minh Ho Đi" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+
+                <div class="bg-white p-2 rounded-xl border shadow-sm flex flex-col items-center">
+                    <p class="text-xs font-bold mb-2 w-full text-center">Nguyen Thi Quynh Nhu</p>
+                    <img src="https://raw.githubusercontent.com/minhkhang4696/web_img_container/main/KNC_Nhu.png" 
+                         alt="Vé Minh Ho Về" class="w-full h-auto object-cover rounded zoomable-image border"
+                         onclick="openLightbox(this.src)">
+                </div>
+            </div>
+        </div>
+
         <!-- Tab 3: VISA (Hình ảnh) -->
         <div id="tab-visa" class="tab-content">
             <h2 class="text-xl font-bold mb-2 flex items-center text-green-700"><i data-lucide="tickets-plane" class="mr-2"></i> Ảnh Visa (5 Năm)</h2>
@@ -511,6 +548,7 @@
             { id: 'flights', icon: 'plane', label: 'Chuyến bay' },
             { id: 'tickets', icon: 'ticket', label: 'Vé PDF' },
             { id: 'visa', icon: 'tickets-plane', label: 'VISA' },
+            { id: 'import', icon: 'ticket', label: 'Tờ khai nhập cảnh' },
             { id: 'esim', icon: 'smartphone-nfc', label: 'e-SIM' },
             { id: 'hotel', icon: 'bed', label: 'Khách sạn' },
             { id: 'itinerary', icon: 'map-pinned', label: 'Lịch trình' },
