@@ -551,6 +551,15 @@
                 </div>
             </div>
 
+            <!-- Biểu đồ thống kê hạng mục -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 mb-6">
+                <h3 class="font-bold text-gray-800 border-b pb-2 mb-3 flex items-center"><i data-lucide="pie-chart" class="w-4 h-4 mr-2 text-purple-600"></i> Thống kê hạng mục</h3>
+                <div class="relative w-full h-56 flex justify-center items-center">
+                    <canvas id="expenseChart"></canvas>
+                    <div id="emptyChartMsg" class="absolute text-center text-gray-400 text-sm">Chưa có dữ liệu chi tiêu</div>
+                </div>
+            </div>
+
             <!-- Form 8 Thêm Chi Tiêu -->
             <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 mb-6">
                 <h3 class="font-bold text-gray-800 border-b pb-2 mb-3 flex items-center"><i data-lucide="plus-circle" class="w-4 h-4 mr-1 text-emerald-600"></i> Thêm khoản chi mới</h3>
@@ -829,6 +838,89 @@
                 listEl.appendChild(item);
             });
             lucide.createIcons();
+        }
+        // --- Hàm vẽ và cập nhật biểu đồ Chart.js ---
+        function updateChart() {
+            const ctx = document.getElementById('expenseChart').getContext('2d');
+            const emptyChartMsg = document.getElementById('emptyChartMsg');
+
+            if (expenses.length === 0) {
+                emptyChartMsg.style.display = 'block';
+                if (myChart) {
+                    myChart.destroy();
+                    myChart = null;
+                }
+                return;
+            }
+
+            emptyChartMsg.style.display = 'none';
+
+            // Tính tổng tiền cho từng hạng mục
+            const categoryTotals = {};
+            Object.keys(categoryInfo).forEach(cat => categoryTotals[cat] = 0);
+            
+            expenses.forEach(exp => {
+                categoryTotals[exp.category] += exp.amount;
+            });
+
+            // Lọc ra các hạng mục có dữ liệu (>0) để hiển thị cho đẹp
+            const labels = [];
+            const data = [];
+            const backgroundColors = [];
+
+            Object.keys(categoryTotals).forEach(cat => {
+                if (categoryTotals[cat] > 0) {
+                    labels.push(categoryInfo[cat].label);
+                    data.push(categoryTotals[cat]);
+                    backgroundColors.push(categoryInfo[cat].color);
+                }
+            });
+
+            // Nếu biểu đồ đã tồn tại, chỉ cần cập nhật dữ liệu để có animation mượt
+            if (myChart) {
+                myChart.data.labels = labels;
+                myChart.data.datasets[0].data = data;
+                myChart.data.datasets[0].backgroundColor = backgroundColors;
+                myChart.update();
+            } else {
+                // Tạo biểu đồ mới
+                myChart = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: labels,
+                        datasets: [{
+                            data: data,
+                            backgroundColor: backgroundColors,
+                            borderWidth: 2,
+                            borderColor: '#ffffff'
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: {
+                                position: 'right',
+                                labels: {
+                                    boxWidth: 12,
+                                    font: { size: 11, family: "'Inter', sans-serif" }
+                                }
+                            },
+                            tooltip: {
+                                callbacks: {
+                                    label: function(context) {
+                                        let label = context.label || '';
+                                        if (label) label += ': ';
+                                        label += new Intl.NumberFormat('ko-KR').format(context.raw) + ' ₩';
+                                        return label;
+                                    }
+                                }
+                            }
+                        },
+                        cutout: '65%' // Làm vòng tròn mỏng lại trông hiện đại hơn
+                    }
+                });
+            }
         }
 
         // Khởi tạo ngày hôm nay cho form chi tiêu khi load trang
