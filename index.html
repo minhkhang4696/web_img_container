@@ -514,6 +514,108 @@
             </div>
         </div>
 
+        <!-- Tab 7: QUẢN LÝ CHI TIÊU (MỚI) -->
+        <div id="tab-budget" class="tab-content">
+            <h2 class="text-xl font-bold mb-4 flex items-center text-emerald-600"><i data-lucide="wallet" class="mr-2"></i> Quản Lý Chi Tiêu</h2>
+            
+            <!-- Phần nhập ngân sách -->
+            <div class="bg-white rounded-2xl shadow-sm border border-emerald-100 p-4 mb-4">
+                <label class="block text-xs font-bold text-gray-700 mb-1">Ngân sách hiện có (KRW)</label>
+                <div class="flex gap-2">
+                    <input type="number" id="budgetInput" placeholder="Ví dụ: 1000000" class="flex-1 bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-emerald-500">
+                    <button onclick="setBudget()" class="bg-emerald-600 text-white px-4 py-2 rounded-lg text-sm font-bold hover:bg-emerald-700 transition">Cập nhật</button>
+                </div>
+            </div>
+
+            <!-- Dashboard Thống kê -->
+            <div class="grid grid-cols-2 gap-3 mb-6">
+                <div class="bg-emerald-50 rounded-xl p-3 border border-emerald-100">
+                    <p class="text-xs text-emerald-700 font-semibold mb-1">Ngân sách</p>
+                    <p class="text-lg font-bold text-emerald-900" id="statBudget">0 ₩</p>
+                </div>
+                <div class="bg-rose-50 rounded-xl p-3 border border-rose-100">
+                    <p class="text-xs text-rose-700 font-semibold mb-1">Đã chi</p>
+                    <p class="text-lg font-bold text-rose-900" id="statSpent">0 ₩</p>
+                </div>
+                <div class="bg-blue-50 rounded-xl p-3 border border-blue-100 col-span-2 flex justify-between items-center">
+                    <div>
+                        <p class="text-xs text-blue-700 font-semibold mb-1">Còn lại</p>
+                        <p class="text-2xl font-black text-blue-900" id="statRemaining">0 ₩</p>
+                    </div>
+                    <div class="text-right">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-wider">Tương đương</p>
+                        <p class="text-sm font-bold text-gray-600" id="statRemainingVND">0 VNĐ</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form 8 Thêm Chi Tiêu -->
+            <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-4 mb-6">
+                <h3 class="font-bold text-gray-800 border-b pb-2 mb-3 flex items-center"><i data-lucide="plus-circle" class="w-4 h-4 mr-1 text-emerald-600"></i> Thêm khoản chi mới</h3>
+                <form id="expenseForm" onsubmit="addExpense(event)" class="space-y-3">
+                    
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Nội dung chi</label>
+                        <input type="text" id="expDesc" required placeholder="VD: Mua vé tàu AREX..." class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">Địa điểm</label>
+                            <input type="text" id="expLocation" placeholder="VD: Incheon" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">Ngày chi</label>
+                            <input type="date" id="expDate" required class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs font-semibold text-gray-600 mb-1">Số tiền (KRW)</label>
+                        <div class="relative">
+                            <input type="number" id="expAmount" required min="1" placeholder="Nhập số tiền Won" oninput="previewVND()" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 pr-12 text-sm focus:outline-none focus:border-blue-500 font-bold text-rose-600">
+                            <span class="absolute right-3 top-2 text-sm text-gray-400 font-bold">₩</span>
+                        </div>
+                        <p class="text-xs text-gray-500 mt-1 italic" id="vndPreview">≈ 0 VNĐ</p>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3">
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">Hạng mục</label>
+                            <select id="expCategory" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                                <option value="eat">🍔 Ăn uống</option>
+                                <option value="transport">🚌 Đi lại</option>
+                                <option value="shopping">🛍️ Mua sắm</option>
+                                <option value="ticket">🎟️ Vé tham quan</option>
+                                <option value="other">📦 Khác</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-semibold text-gray-600 mb-1">Nguồn chi</label>
+                            <select id="expSource" class="w-full bg-gray-50 border border-gray-200 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-blue-500">
+                                <option value="cash">💵 Tiền mặt</option>
+                                <option value="credit">💳 Thẻ tín dụng</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="w-full bg-gray-800 text-white font-bold py-3 rounded-xl mt-2 flex justify-center items-center hover:bg-gray-700 transition">
+                        Lưu Khoản Chi
+                    </button>
+                </form>
+            </div>
+
+            <!-- Lịch sử chi tiêu -->
+            <h3 class="font-bold text-gray-800 mb-3">Lịch sử chi tiêu</h3>
+            <div id="expenseList" class="space-y-3">
+                <!-- Danh sách sẽ được chèn bằng JS -->
+            </div>
+            <div id="emptyExpenseMsg" class="text-center text-gray-400 py-6 text-sm">
+                Chưa có khoản chi nào được ghi nhận.
+            </div>
+
+        </div>
+
     </main>
 
     <!-- Trình xem ảnh Full Screen (Lightbox) -->
@@ -552,7 +654,8 @@
             { id: 'esim', icon: 'smartphone-nfc', label: 'e-SIM' },
             { id: 'hotel', icon: 'bed', label: 'Khách sạn' },
             { id: 'itinerary', icon: 'map-pinned', label: 'Lịch trình' },
-            { id: 'trains', icon: 'train-front', label: 'Tàu điện' }
+            { id: 'trains', icon: 'train-front', label: 'Tàu điện' },
+            { id: 'budget', icon: 'wallet', label: 'Chi tiêu' }
         ];
 
         const tabListEl = document.getElementById('tabList');
@@ -594,7 +697,141 @@
             // Scroll tab bar để button active luôn nằm trong tầm nhìn
             btnElement.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         }
+        // --- Chức năng Quản lý Chi Tiêu ---
+        const KRW_TO_VND_RATE = 18.5; // Tỷ giá 1 KRW = 18.5 VND
+        let budgetKRW = 0;
+        let expenses = [];
 
+        // Định dạng tiền tệ
+        const formatKRW = (num) => new Intl.NumberFormat('ko-KR').format(num) + ' ₩';
+        const formatVND = (num) => new Intl.NumberFormat('vi-VN').format(num) + ' đ';
+
+        function previewVND() {
+            const krwVal = document.getElementById('expAmount').value;
+            const vndVal = krwVal ? Math.round(krwVal * KRW_TO_VND_RATE) : 0;
+            document.getElementById('vndPreview').innerText = `≈ ${formatVND(vndVal)}`;
+        }
+
+        function setBudget() {
+            const inputVal = document.getElementById('budgetInput').value;
+            budgetKRW = Number(inputVal) || 0;
+            updateBudgetDashboard();
+            showToast("Đã cập nhật ngân sách!");
+        }
+
+        function addExpense(e) {
+            e.preventDefault();
+            const amount = Number(document.getElementById('expAmount').value);
+            
+            const expense = {
+                id: Date.now(),
+                desc: document.getElementById('expDesc').value,
+                location: document.getElementById('expLocation').value,
+                date: document.getElementById('expDate').value,
+                amount: amount,
+                category: document.getElementById('expCategory').value,
+                source: document.getElementById('expSource').value
+            };
+
+            expenses.unshift(expense); // Thêm lên đầu danh sách
+            document.getElementById('expenseForm').reset();
+            document.getElementById('vndPreview').innerText = `≈ 0 VNĐ`;
+            
+            // Đặt lại ngày mặc định cho form
+            document.getElementById('expDate').valueAsDate = new Date();
+
+            updateBudgetDashboard();
+            renderExpenseList();
+            showToast("Đã thêm khoản chi!");
+        }
+
+        function deleteExpense(id) {
+            expenses = expenses.filter(exp => exp.id !== id);
+            updateBudgetDashboard();
+            renderExpenseList();
+            showToast("Đã xóa khoản chi!");
+        }
+
+        function updateBudgetDashboard() {
+            const totalSpent = expenses.reduce((sum, exp) => sum + exp.amount, 0);
+            const remaining = budgetKRW - totalSpent;
+            const remainingVND = remaining * KRW_TO_VND_RATE;
+
+            document.getElementById('statBudget').innerText = formatKRW(budgetKRW);
+            document.getElementById('statSpent').innerText = formatKRW(totalSpent);
+            
+            const remainEl = document.getElementById('statRemaining');
+            remainEl.innerText = formatKRW(remaining);
+            if(remaining < 0) {
+                remainEl.classList.remove('text-blue-900');
+                remainEl.classList.add('text-rose-600');
+            } else {
+                remainEl.classList.add('text-blue-900');
+                remainEl.classList.remove('text-rose-600');
+            }
+
+            document.getElementById('statRemainingVND').innerText = formatVND(remainingVND);
+        }
+
+        const categoryIcons = {
+            'eat': '🍔', 'transport': '🚌', 'shopping': '🛍️', 'ticket': '🎟️', 'other': '📦'
+        };
+        const sourceLabels = {
+            'cash': '<span class="text-[10px] bg-green-100 text-green-700 px-2 py-0.5 rounded border border-green-200">Tiền mặt</span>',
+            'credit': '<span class="text-[10px] bg-purple-100 text-purple-700 px-2 py-0.5 rounded border border-purple-200">Thẻ</span>'
+        };
+
+        function renderExpenseList() {
+            const listEl = document.getElementById('expenseList');
+            const emptyMsg = document.getElementById('emptyExpenseMsg');
+            
+            listEl.innerHTML = '';
+            
+            if (expenses.length === 0) {
+                emptyMsg.style.display = 'block';
+                return;
+            }
+            emptyMsg.style.display = 'none';
+
+            expenses.forEach(exp => {
+                const vndEquivalent = formatVND(exp.amount * KRW_TO_VND_RATE);
+                
+                // Format lại ngày: YYYY-MM-DD -> DD/MM/YYYY
+                const dateParts = exp.date.split('-');
+                const displayDate = dateParts.length === 3 ? `${dateParts[2]}/${dateParts[1]}` : exp.date;
+
+                const item = document.createElement('div');
+                item.className = 'bg-white p-3 rounded-xl border border-gray-100 shadow-sm flex items-center justify-between';
+                item.innerHTML = `
+                    <div class="flex items-center flex-1">
+                        <div class="w-10 h-10 bg-gray-50 rounded-full flex items-center justify-center text-xl mr-3 border border-gray-100">
+                            ${categoryIcons[exp.category]}
+                        </div>
+                        <div>
+                            <p class="text-sm font-bold text-gray-800 line-clamp-1">${exp.desc}</p>
+                            <div class="flex items-center gap-2 mt-1">
+                                <span class="text-[10px] text-gray-500"><i data-lucide="calendar" class="w-3 h-3 inline"></i> ${displayDate}</span>
+                                ${exp.location ? `<span class="text-[10px] text-gray-500"><i data-lucide="map-pin" class="w-3 h-3 inline"></i> ${exp.location}</span>` : ''}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-right ml-2 flex flex-col justify-center items-end">
+                        <p class="text-sm font-bold text-rose-600">-${formatKRW(exp.amount)}</p>
+                        <p class="text-[10px] text-gray-400">≈ ${vndEquivalent}</p>
+                        <div class="mt-1 flex items-center gap-2">
+                            ${sourceLabels[exp.source]}
+                            <button onclick="deleteExpense(${exp.id})" class="text-gray-300 hover:text-red-500"><i data-lucide="trash-2" class="w-3 h-3"></i></button>
+                        </div>
+                    </div>
+                `;
+                listEl.appendChild(item);
+            });
+            lucide.createIcons();
+        }
+
+        // Khởi tạo ngày hôm nay cho form chi tiêu khi load trang
+        document.getElementById('expDate').valueAsDate = new Date();
+        
         // Thay thế window.alert mặc định để đẹp hơn trên iFrame/Mobile
         window.alert = function(message) {
             document.getElementById('modalTitle').innerText = 'Trình xem tài liệu';
